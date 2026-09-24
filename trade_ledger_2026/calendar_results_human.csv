@@ -1,4 +1,5 @@
 date,CORE A - Asia Compression Breakout,CORE B - Thu/Fri Asia Close Breakout,Satellite C - 14:00 Previous Close Continuation
+01.01,,,-25
 01.02,,-20,-25
 01.05,,,+30
 01.06,,,+30
@@ -64,6 +65,7 @@ date,CORE A - Asia Compression Breakout,CORE B - Thu/Fri Asia Close Breakout,Sat
 03.31,,,+30
 04.01,-15,,+30
 04.02,,,+30
+04.03,,,-1
 04.06,,,-25
 04.07,+15,,-25
 04.08,,,-25
