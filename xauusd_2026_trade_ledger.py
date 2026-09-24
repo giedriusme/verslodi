@@ -135,10 +135,10 @@ def main():
             ss=g[g['mod']==840]
             if prev_close is not None and not ss.empty:
                 idx=int(ss.index[0]); px=float(ss.iloc[0].close_mid)
-                if px!=prev_close:
-                    side='LONG' if px>prev_close else 'SHORT'
-                    t=mk_trade(g,idx,side,'Satellite C - 14:00 Previous Close Continuation',30,25,1440)
-                    if t: trades.append(t)
+                # Exact final-portfolio rule: equality falls to SHORT via the else branch.
+                side='LONG' if px>prev_close else 'SHORT'
+                t=mk_trade(g,idx,side,'Satellite C - 14:00 Previous Close Continuation',30,25,1440)
+                if t: trades.append(t)
 
         asia_hist.append(AR)
         prev_close=float(g.iloc[-1].close_mid)
