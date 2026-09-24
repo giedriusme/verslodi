@@ -93,6 +93,53 @@
       }
     }
   },
+  "asia_close_10_16": {
+    "n": 801,
+    "positive": 405,
+    "negative": 396,
+    "zero": 0,
+    "positive_rate": 0.5056179775280899,
+    "negative_rate": 0.4943820224719101,
+    "tp_count": 242,
+    "sl_count": 198,
+    "eod_count": 361,
+    "net": 636.7899999999977,
+    "expectancy": 0.7949937578027437,
+    "profit_factor": 1.1208965623297251,
+    "max_drawdown": 435.1480000000015,
+    "max_loss_streak": 8,
+    "loss_streak_start": "2023-02-14",
+    "loss_streak_end": "2023-02-23",
+    "max_win_streak": 9,
+    "win_streak_start": "2024-06-03",
+    "win_streak_end": "2024-06-14",
+    "years": {
+      "2023": {
+        "n": 241,
+        "positive": 103,
+        "negative": 138,
+        "net": -220.8630000000012
+      },
+      "2024": {
+        "n": 240,
+        "positive": 132,
+        "negative": 108,
+        "net": 381.1809999999996
+      },
+      "2025": {
+        "n": 206,
+        "positive": 106,
+        "negative": 100,
+        "net": 212.74199999999928
+      },
+      "2026": {
+        "n": 114,
+        "positive": 64,
+        "negative": 50,
+        "net": 263.73
+      }
+    }
+  },
   "asia_extreme_continuation": {
     "n": 328,
     "positive": 182,
