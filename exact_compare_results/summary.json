@@ -1,5 +1,5 @@
 {
-  "asia_close_breakout_intended": {
+  "asia_close_carry_pre10": {
     "n": 905,
     "positive": 440,
     "negative": 465,
@@ -24,28 +24,71 @@
         "n": 256,
         "positive": 107,
         "negative": 149,
-        "zero": 0,
         "net": -298.1730000000018
       },
       "2024": {
         "n": 253,
         "positive": 135,
         "negative": 118,
-        "zero": 0,
         "net": 356.5749999999989
       },
       "2025": {
         "n": 246,
         "positive": 123,
         "negative": 123,
-        "zero": 0,
         "net": 40.9380000000001
       },
       "2026": {
         "n": 150,
         "positive": 75,
         "negative": 75,
-        "zero": 0,
+        "net": 52.89399999999978
+      }
+    }
+  },
+  "asia_close_post10_only": {
+    "n": 902,
+    "positive": 447,
+    "negative": 455,
+    "zero": 0,
+    "positive_rate": 0.4955654101995565,
+    "negative_rate": 0.5044345898004434,
+    "tp_count": 265,
+    "sl_count": 230,
+    "eod_count": 407,
+    "net": 352.3169999999975,
+    "expectancy": 0.39059534368070675,
+    "profit_factor": 1.0577135622292704,
+    "max_drawdown": 451.48800000000165,
+    "max_loss_streak": 8,
+    "loss_streak_start": "2023-02-14",
+    "loss_streak_end": "2023-02-23",
+    "max_win_streak": 8,
+    "win_streak_start": "2026-04-28",
+    "win_streak_end": "2026-05-07",
+    "years": {
+      "2023": {
+        "n": 255,
+        "positive": 109,
+        "negative": 146,
+        "net": -251.98300000000154
+      },
+      "2024": {
+        "n": 252,
+        "positive": 137,
+        "negative": 115,
+        "net": 363.4009999999996
+      },
+      "2025": {
+        "n": 245,
+        "positive": 126,
+        "negative": 119,
+        "net": 188.00499999999965
+      },
+      "2026": {
+        "n": 150,
+        "positive": 75,
+        "negative": 75,
         "net": 52.89399999999978
       }
     }
@@ -75,28 +118,24 @@
         "n": 105,
         "positive": 39,
         "negative": 66,
-        "zero": 0,
         "net": -158.56900000000132
       },
       "2024": {
         "n": 85,
         "positive": 52,
         "negative": 33,
-        "zero": 0,
         "net": 317.8079999999991
       },
       "2025": {
         "n": 90,
         "positive": 57,
         "negative": 33,
-        "zero": 0,
         "net": 390.30100000000084
       },
       "2026": {
         "n": 48,
         "positive": 34,
         "negative": 14,
-        "zero": 0,
         "net": 193.52999999999975
       }
     }
@@ -126,28 +165,24 @@
         "n": 7,
         "positive": 4,
         "negative": 3,
-        "zero": 0,
         "net": 10.44199999999978
       },
       "2024": {
         "n": 17,
         "positive": 6,
         "negative": 11,
-        "zero": 0,
         "net": -26.688999999999396
       },
       "2025": {
         "n": 76,
         "positive": 40,
         "negative": 36,
-        "zero": 0,
         "net": 141.16699999999855
       },
       "2026": {
         "n": 58,
         "positive": 30,
         "negative": 28,
-        "zero": 0,
         "net": 185.53999999999996
       }
     }
