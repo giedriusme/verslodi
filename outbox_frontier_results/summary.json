@@ -1,0 +1,43 @@
+{
+  "base_count": 1,
+  "max_win_rate": 0.4948453608247423,
+  "max_wr_streak3": null,
+  "max_wr_streak5": null,
+  "best_wr": [
+    {
+      "family": "asia_morning_divergence_fade",
+      "variant": "asia_dir",
+      "exit": "F30_25",
+      "exit_type": "fixed",
+      "initial_rr": 1.2,
+      "n_2023": 137,
+      "n_2024": 151,
+      "n_2025": 117,
+      "n_2026": 80,
+      "net_2023": 54.07099999999946,
+      "net_2024": 13.986000000000558,
+      "net_2025": 23.216000000001717,
+      "net_2026": 16.743000000000393,
+      "n": 485,
+      "positive": 240,
+      "negative": 245,
+      "win_rate": 0.4948453608247423,
+      "tp_count": 87,
+      "sl_count": 119,
+      "eod_count": 279,
+      "net": 108.01600000000212,
+      "ev": 0.22271340206186,
+      "pf": 1.0270672629603548,
+      "max_dd": 290.0,
+      "max_loss_streak": 7,
+      "streak_start": "2024-03-15",
+      "streak_end": "2024-03-27",
+      "avg_tp": 30.0,
+      "avg_sl": 25.0,
+      "avg_rr": 1.1999999999999995,
+      "score": 49.33266293712816
+    }
+  ],
+  "best_streak3": [],
+  "best_streak5": []
+}
