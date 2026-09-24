@@ -1,0 +1,155 @@
+{
+  "asia_close_breakout_intended": {
+    "n": 905,
+    "positive": 440,
+    "negative": 465,
+    "zero": 0,
+    "positive_rate": 0.4861878453038674,
+    "negative_rate": 0.5138121546961326,
+    "tp_count": 269,
+    "sl_count": 241,
+    "eod_count": 395,
+    "net": 152.23399999999697,
+    "expectancy": 0.16821436464088063,
+    "profit_factor": 1.024188718848289,
+    "max_drawdown": 485.9770000000019,
+    "max_loss_streak": 8,
+    "loss_streak_start": "2023-02-14",
+    "loss_streak_end": "2023-02-23",
+    "max_win_streak": 8,
+    "win_streak_start": "2026-04-28",
+    "win_streak_end": "2026-05-07",
+    "years": {
+      "2023": {
+        "n": 256,
+        "positive": 107,
+        "negative": 149,
+        "zero": 0,
+        "net": -298.1730000000018
+      },
+      "2024": {
+        "n": 253,
+        "positive": 135,
+        "negative": 118,
+        "zero": 0,
+        "net": 356.5749999999989
+      },
+      "2025": {
+        "n": 246,
+        "positive": 123,
+        "negative": 123,
+        "zero": 0,
+        "net": 40.9380000000001
+      },
+      "2026": {
+        "n": 150,
+        "positive": 75,
+        "negative": 75,
+        "zero": 0,
+        "net": 52.89399999999978
+      }
+    }
+  },
+  "asia_extreme_continuation": {
+    "n": 328,
+    "positive": 182,
+    "negative": 146,
+    "zero": 0,
+    "positive_rate": 0.5548780487804879,
+    "negative_rate": 0.4451219512195122,
+    "tp_count": 121,
+    "sl_count": 21,
+    "eod_count": 186,
+    "net": 743.0699999999983,
+    "expectancy": 2.2654573170731656,
+    "profit_factor": 1.3471185104179457,
+    "max_drawdown": 238.88200000000165,
+    "max_loss_streak": 11,
+    "loss_streak_start": "2023-01-30",
+    "loss_streak_end": "2023-02-22",
+    "max_win_streak": 12,
+    "win_streak_start": "2026-04-30",
+    "win_streak_end": "2026-06-01",
+    "years": {
+      "2023": {
+        "n": 105,
+        "positive": 39,
+        "negative": 66,
+        "zero": 0,
+        "net": -158.56900000000132
+      },
+      "2024": {
+        "n": 85,
+        "positive": 52,
+        "negative": 33,
+        "zero": 0,
+        "net": 317.8079999999991
+      },
+      "2025": {
+        "n": 90,
+        "positive": 57,
+        "negative": 33,
+        "zero": 0,
+        "net": 390.30100000000084
+      },
+      "2026": {
+        "n": 48,
+        "positive": 34,
+        "negative": 14,
+        "zero": 0,
+        "net": 193.52999999999975
+      }
+    }
+  },
+  "10_11_momentum_continuation": {
+    "n": 158,
+    "positive": 80,
+    "negative": 78,
+    "zero": 0,
+    "positive_rate": 0.5063291139240507,
+    "negative_rate": 0.4936708860759494,
+    "tp_count": 49,
+    "sl_count": 50,
+    "eod_count": 59,
+    "net": 310.4599999999989,
+    "expectancy": 1.9649367088607526,
+    "profit_factor": 1.1786745074883178,
+    "max_drawdown": 180.0,
+    "max_loss_streak": 6,
+    "loss_streak_start": "2026-03-25",
+    "loss_streak_end": "2026-04-06",
+    "max_win_streak": 6,
+    "win_streak_start": "2026-03-02",
+    "win_streak_end": "2026-03-23",
+    "years": {
+      "2023": {
+        "n": 7,
+        "positive": 4,
+        "negative": 3,
+        "zero": 0,
+        "net": 10.44199999999978
+      },
+      "2024": {
+        "n": 17,
+        "positive": 6,
+        "negative": 11,
+        "zero": 0,
+        "net": -26.688999999999396
+      },
+      "2025": {
+        "n": 76,
+        "positive": 40,
+        "negative": 36,
+        "zero": 0,
+        "net": 141.16699999999855
+      },
+      "2026": {
+        "n": 58,
+        "positive": 30,
+        "negative": 28,
+        "zero": 0,
+        "net": 185.53999999999996
+      }
+    }
+  }
+}
