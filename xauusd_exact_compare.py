@@ -8,14 +8,11 @@ OUT=Path('exact_compare_results'); OUT.mkdir(exist_ok=True)
 
 def first_close_break(frame, ah, al):
     for idx,r in frame.iterrows():
-        up=float(r.close_mid)>ah
-        dn=float(r.close_mid)<al
-        if up and not dn:return int(idx),'LONG'
-        if dn and not up:return int(idx),'SHORT'
+        if float(r.close_mid)>ah:return int(idx),'LONG'
+        if float(r.close_mid)<al:return int(idx),'SHORT'
     return None,None
 
-def mk(g, signal_idx, direction, family, tp, sl, entry_mode='next'):
-    # execute at next available 1m bar open; realistic ask for long / bid for short
+def mk(g, signal_idx, direction, family, tp, sl):
     loc=g.index.get_loc(signal_idx)
     if loc+1>=len(g): return None
     e=g.iloc[loc+1]; fut=g.iloc[loc+1:]
@@ -36,31 +33,30 @@ def eval_trade(c):
     a=int(itp[0]) if len(itp) else None; b=int(isl[0]) if len(isl) else None
     if a is None and b is None:return eod,'EOD'
     if a is not None and (b is None or a<b):return float(tp),'TP'
-    return -float(sl),'SL'  # same-minute tie conservative SL
+    return -float(sl),'SL'
 
 def stats(cs):
     rows=[]
     for c in sorted(cs,key=lambda x:x['date']):
         x=eval_trade(c)
         if x is not None:rows.append({'date':c['date'],'year':c['year'],'direction':c['direction'],'pnl':x[0],'outcome':x[1]})
-    r=pd.DataFrame(rows)
-    p=r.pnl.to_numpy(float)
+    r=pd.DataFrame(rows); p=r.pnl.to_numpy(float)
     pos=int((p>0).sum()); neg=int((p<0).sum()); zero=int((p==0).sum())
-    def streak(sign):
-        best=cur=0; start=end=bstart=bend=None
+    def streak(loss=True):
+        best=cur=0; bstart=bend=start=None
         for i,v in enumerate(p):
-            ok=(v<0) if sign=='loss' else (v>0)
+            ok=(v<0) if loss else (v>0)
             if ok:
                 if cur==0:start=i
-                cur+=1; end=i
-                if cur>best:best=cur;bstart=start;bend=end
+                cur+=1
+                if cur>best:best=cur;bstart=start;bend=i
             else:cur=0
-        return best, (r.iloc[bstart].date if bstart is not None else None), (r.iloc[bend].date if bend is not None else None)
-    ls,lsd,led=streak('loss'); ws,wsd,wed=streak('win')
+        return best,(r.iloc[bstart].date if bstart is not None else None),(r.iloc[bend].date if bend is not None else None)
+    ls,lsd,led=streak(True); ws,wsd,wed=streak(False)
     gains=p[p>0].sum(); losses=-p[p<0].sum(); eq=np.cumsum(p); peak=np.maximum.accumulate(np.r_[0.,eq]); dd=peak[1:]-eq
     years={}
     for y,g in r.groupby('year'):
-        py=g.pnl.to_numpy(float); years[str(y)]={'n':len(g),'positive':int((py>0).sum()),'negative':int((py<0).sum()),'zero':int((py==0).sum()),'net':float(py.sum())}
+        py=g.pnl.to_numpy(float); years[str(y)]={'n':len(g),'positive':int((py>0).sum()),'negative':int((py<0).sum()),'net':float(py.sum())}
     return {'n':len(r),'positive':pos,'negative':neg,'zero':zero,'positive_rate':float(pos/len(r)),'negative_rate':float(neg/len(r)),
             'tp_count':int((r.outcome=='TP').sum()),'sl_count':int((r.outcome=='SL').sum()),'eod_count':int((r.outcome=='EOD').sum()),
             'net':float(p.sum()),'expectancy':float(p.mean()),'profit_factor':float(gains/losses) if losses>0 else None,
@@ -69,29 +65,31 @@ def stats(cs):
 
 def main():
     df=bt.load_data(); df['mod']=(df.hour*60+df.minute).astype(int)
-    close_cs=[]; extreme=[]; mom=[]
+    close_carry=[]; close_post10=[]; extreme=[]; mom=[]
     for day,g0 in df.groupby('local_date',sort=True):
         if pd.Timestamp(day).dayofweek>=5:continue
         g=g0.sort_values('timestamp').reset_index(drop=True)
         asia=g[(g['mod']>=60)&(g['mod']<540)]
         if len(asia)>=420:
             ah=float(asia.high_mid.max()); al=float(asia.low_mid.min())
-            # Intended Asia Close Breakout:
-            # 09:00-10:00 confirmed close gives direction; execute after 10:00 bar closes (10:01 open).
-            pre=g[(g['mod']>=540)&(g['mod']<600)]
-            idx,d=first_close_break(pre,ah,al)
+            # A: confirmed close from 09:00-10:00 can carry direction into 10:00.
+            pre=g[(g['mod']>=540)&(g['mod']<600)]; idx,d=first_close_break(pre,ah,al)
             if d is not None:
                 startbar=g[g['mod']==600]
                 if not startbar.empty:
-                    c=mk(g,int(startbar.index[0]),d,'asia_close_breakout_intended',20.,20.)
-                    if c:close_cs.append(c)
+                    c=mk(g,int(startbar.index[0]),d,'asia_close_carry_pre10',20.,20.)
+                    if c:close_carry.append(c)
             else:
-                post=g[(g['mod']>=600)&(g['mod']<1440)]
-                idx,d=first_close_break(post,ah,al)
+                post=g[(g['mod']>=600)&(g['mod']<1440)]; idx,d=first_close_break(post,ah,al)
                 if d is not None:
-                    c=mk(g,idx,d,'asia_close_breakout_intended',20.,20.)
-                    if c:close_cs.append(c)
-            # Asia Extreme Continuation at 10:00 close; top/bottom 10% of Asia range
+                    c=mk(g,idx,d,'asia_close_carry_pre10',20.,20.)
+                    if c:close_carry.append(c)
+            # B: ignore all pre-10 action; only first confirmed 1m close after 10:00 counts.
+            post=g[(g['mod']>=600)&(g['mod']<1440)]; idx,d=first_close_break(post,ah,al)
+            if d is not None:
+                c=mk(g,idx,d,'asia_close_post10_only',20.,20.)
+                if c:close_post10.append(c)
+            # Asia Extreme Continuation: at 10:00 close, top/bottom 10% of Asia range.
             s=g[g['mod']==600]
             if not s.empty and ah>al:
                 r=s.iloc[0]; rel=(float(r.close_mid)-al)/(ah-al); idx=int(s.index[0])
@@ -99,7 +97,7 @@ def main():
                 if d:
                     c=mk(g,idx,d,'asia_extreme_continuation',20.,40.)
                     if c:extreme.append(c)
-        # 10:00-11:00 momentum continuation threshold 8, entry after 10:59 bar
+        # 10:00-11:00 move >=8, continuation, enter next bar, TP35/SL30.
         w=g[(g['mod']>=600)&(g['mod']<660)]
         if len(w)>=42:
             mv=float(w.iloc[-1].close_mid-w.iloc[0].open_mid)
@@ -108,7 +106,7 @@ def main():
                 c=mk(g,idx,d,'10_11_momentum_continuation',35.,30.)
                 if c:mom.append(c)
     result={}
-    for name,cs in [('asia_close_breakout_intended',close_cs),('asia_extreme_continuation',extreme),('10_11_momentum_continuation',mom)]:
+    for name,cs in [('asia_close_carry_pre10',close_carry),('asia_close_post10_only',close_post10),('asia_extreme_continuation',extreme),('10_11_momentum_continuation',mom)]:
         s,r=stats(cs); result[name]=s; r.to_csv(OUT/f'{name}_trades.csv',index=False)
     with open(OUT/'summary.json','w') as f:json.dump(result,f,indent=2,allow_nan=False)
     print(json.dumps(result,indent=2))
