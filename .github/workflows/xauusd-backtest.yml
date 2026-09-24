@@ -5,7 +5,7 @@ on:
     branches:
       - xauusd-backtest-20260924
     paths:
-      - xauusd_hold24_search.py
+      - xauusd_hold24_frontier.py
       - .github/workflows/xauusd-backtest.yml
   workflow_dispatch:
 
@@ -15,7 +15,7 @@ permissions:
 jobs:
   backtest:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,15 +26,15 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install dependencies
-        run: python -m pip install --upgrade pip pandas numpy requests
-      - name: Run 24h hold search
-        run: python xauusd_hold24_search.py
-      - name: Commit search results
+        run: python -m pip install --upgrade pip pandas
+      - name: Analyze 24h hold frontier
+        run: python xauusd_hold24_frontier.py
+      - name: Commit frontier results
         run: |
           git config user.name "xauusd-backtest-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add hold24_results
+          git add hold24_frontier_results
           if ! git diff --cached --quiet; then
-            git commit -m "Add 24h hold XAUUSD strategy results"
+            git commit -m "Add 24h hold strategy frontier results"
             git push
           fi
