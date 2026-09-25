@@ -31,20 +31,46 @@ def met(rows, years=None):
         yd[int(y)]={'n':int(len(g)),'net':float(x.sum()),'wr':float((x>0).mean()),'tp':int((g.outcome=='TP').sum()),'sl':int((g.outcome=='SL').sum()),'time':int((g.outcome=='TIME').sum())}
     return {'n':int(len(r)),'net':float(pnl.sum()),'ev':float(pnl.mean()),'wr':float((pnl>0).mean()),'pf':float(gains/losses) if losses>0 else 99.,'dd':float(dd.max()),'streak':int(streak),'tp':int((r.outcome=='TP').sum()),'sl':int((r.outcome=='SL').sum()),'time':int((r.outcome=='TIME').sum()),'years':yd}
 
+def signal_grid_results(df, cs, horizon):
+    store={(tp,sl):[] for tp in TPS for sl in SLS}
+    for c in cs:
+        i=int(c['entry_i']); e=float(c['entry']); side=c['side']
+        f=df.iloc[i:min(len(df),i+horizon)]
+        if f.empty: continue
+        if side=='LONG':
+            fav=f.high_bid.to_numpy(float)-e
+            adv=e-f.low_bid.to_numpy(float)
+            mark=float(f.iloc[-1].close_bid-e)
+        else:
+            fav=e-f.low_ask.to_numpy(float)
+            adv=f.high_ask.to_numpy(float)-e
+            mark=float(e-f.iloc[-1].close_ask)
+        tp_first={}
+        sl_first={}
+        for tp in TPS:
+            a=np.flatnonzero(fav>=tp); tp_first[tp]=int(a[0]) if len(a) else None
+        for sl in SLS:
+            b=np.flatnonzero(adv>=sl); sl_first[sl]=int(b[0]) if len(b) else None
+        for tp in TPS:
+            ia=tp_first[tp]
+            for sl in SLS:
+                ib=sl_first[sl]
+                if ia is not None and (ib is None or ia<ib): pnl=tp; outcome='TP'
+                elif ib is not None: pnl=-sl; outcome='SL'
+                else: pnl=mark; outcome='TIME'
+                store[(tp,sl)].append({'year':int(c['year']),'pnl':float(pnl),'outcome':outcome})
+    return store
+
 def main():
     df=p.load(); C=p.candidates(df)
     out=[]
     for name,key,horizon in SPECS:
         cs=C.get(key,[])
         print(name, 'signals', len(cs), flush=True)
+        store=signal_grid_results(df,cs,horizon)
         for tp in TPS:
             for sl in SLS:
-                rows=[]
-                for c in cs:
-                    z=p.trade_result(df,c,tp,sl,horizon)
-                    if z:
-                        # p.trade_result returns R; reconstruct nominal pnl from R*sl
-                        rows.append({'year':z['year'],'pnl':float(z['R']*sl),'outcome':z['outcome']})
+                rows=store[(tp,sl)]
                 tr=met(rows,TRAIN); oo=met(rows,OOS); al=met(rows)
                 if not tr or not oo: continue
                 rec={'strategy':name,'tp':tp,'sl':sl,'rr':tp/sl,'horizon_min':horizon,
@@ -60,7 +86,6 @@ def main():
     grid=pd.DataFrame(out)
     grid.to_csv(OUT/'grid.csv',index=False)
 
-    # Robust shortlist: positive OOS every year, train overall positive, at least 3/5 train years positive.
     robust=grid[(grid.oos_all_years_positive)&(grid.train_net>0)&(grid.train_pos_years>=3)&(grid.oos_pf>1)].copy()
     robust['smooth_score']=robust.oos_wr + 0.08*np.log(np.maximum(robust.oos_pf,1e-9)) + 0.001*np.maximum(robust.oos_net,0) - 0.002*robust.oos_streak
     robust['profit_score']=robust.oos_ev*np.sqrt(robust.oos_n) + 0.15*(robust.oos_pf-1) - 0.01*robust.oos_dd
@@ -74,7 +99,6 @@ def main():
             if df.empty:return []
             cols=['tp','sl','rr','oos_n','oos_net','oos_ev','oos_wr','oos_pf','oos_dd','oos_streak','oos_tp','oos_sl','oos_time','train_net','train_wr','train_pf','train_pos_years']+[f'net_{y}' for y in range(2018,2027)]
             return df.sort_values(sortcol,ascending=False).head(n)[cols].to_dict('records')
-        # exact requested examples
         examples=g[((g.tp==6)&(g.sl==12))|((g.tp==5)&(g.sl==15))].copy()
         summary[name]={
             'signals':int(g.oos_n.max()) if len(g) else 0,
