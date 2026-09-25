@@ -1,0 +1,16 @@
+{
+  "system": "A Smooth TP15/SL20 10% + B1 TP4/SL20 10% + retest/reclaim +2 within 120m + B2 TP15/SL12 5%",
+  "start": 300.0,
+  "final": 191.0,
+  "return_pct": -36.33,
+  "max_dd_pct": 41.59,
+  "active_days": 55,
+  "executed_trades": 27,
+  "wins": 15,
+  "losses": 12,
+  "win_rate_pct": 55.56,
+  "A_trades": 8,
+  "B1_trades": 15,
+  "B2_trades": 4,
+  "sizing_note": "A and B1 lot use beginning-of-day equity to reproduce validated portfolio; B2 uses beginning-of-day equity plus realized B1 P/L. 0.01 lot step, rounded down."
+}
