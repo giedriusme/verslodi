@@ -4,6 +4,9 @@ import xauusd_portfolio_discovery as p
 
 OUT=Path('expectancy_v2_2026_ledger'); OUT.mkdir(exist_ok=True)
 
+# Only enough history to seed the 20-session Asia median and previous-day context.
+p.MONTHS=[(2025,m) for m in (11,12)] + [(2026,m) for m in range(1,9)]
+
 SPECS=[
     ('A 15/12', ('asia_compression_break','r070'), 15.0, 12.0, 1440),
     ('B 20/20', ('asia_break_10_16','thu_fri'), 20.0, 20.0, 480),
@@ -38,7 +41,6 @@ def main():
         })
     pd.DataFrame(summaries).to_csv(OUT/'summary.csv',index=False)
 
-    # Combined Expectancy V2 calendar, only dates where any strategy trades.
     dates=sorted(set(r['date'] for n in ['A 15/12','B 20/20','C 30/20'] for r in ledgers[n]))
     maps={n:{r['date']:fmt(r['pnl']) for r in ledgers[n]} for n in ledgers}
     combined=[]
