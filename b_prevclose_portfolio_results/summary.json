@@ -1,0 +1,368 @@
+{
+  "correlation": {
+    "b_signal_days": 773,
+    "p_signal_days": 348,
+    "union_days": 984,
+    "overlap_days": 137,
+    "overlap_pct_of_p": 0.3936781609195402,
+    "same_side_pct_overlap": 0.9416058394160584,
+    "daily_R_corr_zero_fill": 0.1548541205902136,
+    "overlap_R_corr": 0.6074383144595803
+  },
+  "risk_modes": {
+    "0.03": {
+      "profitable_years": 8,
+      "stalled_any": 9,
+      "median_final": 437.8060000000007,
+      "worst_final": 290.87899999999945,
+      "best_final": 566.5500000000002,
+      "worst_dd_pct": 31.48866666666671,
+      "years": [
+        {
+          "year": 2018,
+          "final": 336.63599999999997,
+          "return_pct": 12.211999999999978,
+          "dd_pct": 10.157634274073336,
+          "max_nominal_risk_pct": 7.290941369894971,
+          "max_day_loss_pct": 4.345370680027036,
+          "b_trades": 95,
+          "p_trades": 0,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2019,
+          "final": 290.87899999999945,
+          "return_pct": -3.0403333333335114,
+          "dd_pct": 17.362265087686247,
+          "max_nominal_risk_pct": 7.0680369234249,
+          "max_day_loss_pct": 5.974375901757356,
+          "b_trades": 91,
+          "p_trades": 0,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2020,
+          "final": 437.8060000000007,
+          "return_pct": 45.935333333333574,
+          "dd_pct": 23.666213036859375,
+          "max_nominal_risk_pct": 9.99245569594956,
+          "max_day_loss_pct": 8.75566655795046,
+          "b_trades": 88,
+          "p_trades": 0,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2021,
+          "final": 382.297,
+          "return_pct": 27.432333333333347,
+          "dd_pct": 23.734089531561196,
+          "max_nominal_risk_pct": 9.987864744335635,
+          "max_day_loss_pct": 9.074451335986097,
+          "b_trades": 92,
+          "p_trades": 0,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2022,
+          "final": 393.37600000000134,
+          "return_pct": 31.12533333333378,
+          "dd_pct": 22.19104031910878,
+          "max_nominal_risk_pct": 9.965991055522998,
+          "max_day_loss_pct": 6.944893563038834,
+          "b_trades": 98,
+          "p_trades": 0,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2023,
+          "final": 487.69800000000055,
+          "return_pct": 62.56600000000019,
+          "dd_pct": 21.369691932091897,
+          "max_nominal_risk_pct": 9.9943781622837,
+          "max_day_loss_pct": 9.08626270657049,
+          "b_trades": 92,
+          "p_trades": 0,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2024,
+          "final": 554.1750000000027,
+          "return_pct": 84.72500000000089,
+          "dd_pct": 31.48866666666671,
+          "max_nominal_risk_pct": 9.90788147201391,
+          "max_day_loss_pct": 8.61938931626694,
+          "b_trades": 95,
+          "p_trades": 0,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2025,
+          "final": 487.14399999999796,
+          "return_pct": 62.38133333333265,
+          "dd_pct": 23.22353243474248,
+          "max_nominal_risk_pct": 9.877006575617168,
+          "max_day_loss_pct": 8.636622735045727,
+          "b_trades": 76,
+          "p_trades": 0,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2026,
+          "final": 566.5500000000002,
+          "return_pct": 88.85000000000005,
+          "dd_pct": 25.0,
+          "max_nominal_risk_pct": 9.83888820563276,
+          "max_day_loss_pct": 8.610483263373153,
+          "b_trades": 46,
+          "p_trades": 0,
+          "stall_b": false,
+          "stall_p": true
+        }
+      ]
+    },
+    "0.05": {
+      "profitable_years": 8,
+      "stalled_any": 9,
+      "median_final": 384.4709999999982,
+      "worst_final": 290.87899999999945,
+      "best_final": 589.9840000000029,
+      "worst_dd_pct": 36.34989960455236,
+      "years": [
+        {
+          "year": 2018,
+          "final": 336.63599999999997,
+          "return_pct": 12.211999999999978,
+          "dd_pct": 10.157634274073336,
+          "max_nominal_risk_pct": 7.290941369894971,
+          "max_day_loss_pct": 4.345370680027036,
+          "b_trades": 95,
+          "p_trades": 0,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2019,
+          "final": 290.87899999999945,
+          "return_pct": -3.0403333333335114,
+          "dd_pct": 17.362265087686247,
+          "max_nominal_risk_pct": 7.0680369234249,
+          "max_day_loss_pct": 5.974375901757356,
+          "b_trades": 91,
+          "p_trades": 0,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2020,
+          "final": 542.6010000000006,
+          "return_pct": 80.8670000000002,
+          "dd_pct": 25.316894229051574,
+          "max_nominal_risk_pct": 14.496290157743777,
+          "max_day_loss_pct": 8.396517124696665,
+          "b_trades": 88,
+          "p_trades": 20,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2021,
+          "final": 357.0830000000001,
+          "return_pct": 19.027666666666686,
+          "dd_pct": 30.018288111427506,
+          "max_nominal_risk_pct": 14.78611879167838,
+          "max_day_loss_pct": 9.628183619089803,
+          "b_trades": 92,
+          "p_trades": 7,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2022,
+          "final": 393.37600000000134,
+          "return_pct": 31.12533333333378,
+          "dd_pct": 22.19104031910878,
+          "max_nominal_risk_pct": 9.965991055522998,
+          "max_day_loss_pct": 6.944893563038834,
+          "b_trades": 98,
+          "p_trades": 0,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2023,
+          "final": 378.4890000000007,
+          "return_pct": 26.163000000000245,
+          "dd_pct": 36.34989960455236,
+          "max_nominal_risk_pct": 12.61447637308573,
+          "max_day_loss_pct": 12.268282808455282,
+          "b_trades": 92,
+          "p_trades": 5,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2024,
+          "final": 589.9840000000029,
+          "return_pct": 96.66133333333428,
+          "dd_pct": 31.48866666666671,
+          "max_nominal_risk_pct": 12.867556386704345,
+          "max_day_loss_pct": 8.61938931626694,
+          "b_trades": 95,
+          "p_trades": 12,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2025,
+          "final": 384.4709999999982,
+          "return_pct": 28.15699999999939,
+          "dd_pct": 32.0963852521176,
+          "max_nominal_risk_pct": 13.065689933757007,
+          "max_day_loss_pct": 9.744902806775674,
+          "b_trades": 76,
+          "p_trades": 12,
+          "stall_b": false,
+          "stall_p": true
+        },
+        {
+          "year": 2026,
+          "final": 584.0700000000006,
+          "return_pct": 94.69000000000021,
+          "dd_pct": 25.0,
+          "max_nominal_risk_pct": 12.683112435791728,
+          "max_day_loss_pct": 8.58240178513956,
+          "b_trades": 46,
+          "p_trades": 6,
+          "stall_b": false,
+          "stall_p": true
+        }
+      ]
+    },
+    "0.1": {
+      "profitable_years": 7,
+      "stalled_any": 1,
+      "median_final": 392.7930000000015,
+      "worst_final": 199.52400000000011,
+      "best_final": 869.590000000001,
+      "worst_dd_pct": 51.6603119649774,
+      "years": [
+        {
+          "year": 2018,
+          "final": 352.72399999999993,
+          "return_pct": 17.57466666666665,
+          "dd_pct": 16.554741614418585,
+          "max_nominal_risk_pct": 13.356529172329276,
+          "max_day_loss_pct": 7.233512419216654,
+          "b_trades": 95,
+          "p_trades": 42,
+          "stall_b": false,
+          "stall_p": false
+        },
+        {
+          "year": 2019,
+          "final": 298.4369999999999,
+          "return_pct": -0.5210000000000381,
+          "dd_pct": 22.268995605033307,
+          "max_nominal_risk_pct": 13.415705766741128,
+          "max_day_loss_pct": 8.992689950527957,
+          "b_trades": 91,
+          "p_trades": 38,
+          "stall_b": false,
+          "stall_p": false
+        },
+        {
+          "year": 2020,
+          "final": 629.796000000001,
+          "return_pct": 109.93200000000031,
+          "dd_pct": 31.98957770808925,
+          "max_nominal_risk_pct": 18.849386334666097,
+          "max_day_loss_pct": 10.307073486857172,
+          "b_trades": 88,
+          "p_trades": 35,
+          "stall_b": false,
+          "stall_p": false
+        },
+        {
+          "year": 2021,
+          "final": 305.67999999999984,
+          "return_pct": 1.8933333333332802,
+          "dd_pct": 31.573369435156856,
+          "max_nominal_risk_pct": 19.608900479927858,
+          "max_day_loss_pct": 9.89364333415781,
+          "b_trades": 92,
+          "p_trades": 45,
+          "stall_b": false,
+          "stall_p": false
+        },
+        {
+          "year": 2022,
+          "final": 502.0420000000024,
+          "return_pct": 67.34733333333413,
+          "dd_pct": 37.198190962273564,
+          "max_nominal_risk_pct": 19.918434012717867,
+          "max_day_loss_pct": 19.458328772787464,
+          "b_trades": 98,
+          "p_trades": 32,
+          "stall_b": false,
+          "stall_p": false
+        },
+        {
+          "year": 2023,
+          "final": 392.7930000000015,
+          "return_pct": 30.931000000000488,
+          "dd_pct": 42.385875926648254,
+          "max_nominal_risk_pct": 18.661764843101146,
+          "max_day_loss_pct": 15.606710885680819,
+          "b_trades": 92,
+          "p_trades": 35,
+          "stall_b": false,
+          "stall_p": false
+        },
+        {
+          "year": 2024,
+          "final": 199.52400000000011,
+          "return_pct": -33.49199999999997,
+          "dd_pct": 33.49199999999996,
+          "max_nominal_risk_pct": 16.194200856673213,
+          "max_day_loss_pct": 14.673514306676442,
+          "b_trades": 18,
+          "p_trades": 4,
+          "stall_b": true,
+          "stall_p": true
+        },
+        {
+          "year": 2025,
+          "final": 529.9169999999986,
+          "return_pct": 76.63899999999953,
+          "dd_pct": 51.6603119649774,
+          "max_nominal_risk_pct": 19.24784243716184,
+          "max_day_loss_pct": 18.294997690256583,
+          "b_trades": 76,
+          "p_trades": 45,
+          "stall_b": false,
+          "stall_p": false
+        },
+        {
+          "year": 2026,
+          "final": 869.590000000001,
+          "return_pct": 189.86333333333369,
+          "dd_pct": 26.229508196721312,
+          "max_nominal_risk_pct": 19.367646346777676,
+          "max_day_loss_pct": 8.828852690592843,
+          "b_trades": 46,
+          "p_trades": 39,
+          "stall_b": false,
+          "stall_p": false
+        }
+      ]
+    }
+  }
+}
