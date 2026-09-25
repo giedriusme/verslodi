@@ -1,0 +1,27 @@
+name: XAUUSD extract 5pct
+on:
+  push:
+    branches: [xauusd-backtest-20260924]
+    paths:
+      - 'xauusd_extract_5pct_key.py'
+      - '.github/workflows/xauusd-extract-5pct.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: xauusd-backtest-20260924
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python xauusd_extract_5pct_key.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add b_reentry_5pct_results/key_results.json
+          git commit -m "Add compact 5pct re-entry key results" || exit 0
+          git push origin HEAD:xauusd-backtest-20260924
