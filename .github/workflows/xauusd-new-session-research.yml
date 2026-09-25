@@ -1,0 +1,36 @@
+name: XAUUSD new session research
+on:
+  push:
+    branches: [xauusd-backtest-20260924]
+    paths:
+      - 'xauusd_new_session_strategies.py'
+      - 'xauusd_b_partial_2026_ledger.py'
+      - '.github/workflows/xauusd-new-session-research.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: xauusd-backtest-20260924
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip pandas numpy requests
+      - name: Patch pandas mod-column access
+        run: sed -i 's/g\.mod/g["mod"]/g' xauusd_portfolio_discovery.py
+      - name: Run B Partial 2026 ledger
+        run: python xauusd_b_partial_2026_ledger.py
+      - name: Run new strategy research
+        run: python xauusd_new_session_strategies.py
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add b_partial_2026_ledger new_session_strategy_results
+          git commit -m "Add B Partial ledger and session strategy research results" || exit 0
+          git push origin HEAD:xauusd-backtest-20260924
