@@ -23,11 +23,15 @@ jobs:
       - name: Patch pandas mod-column access
         run: sed -i 's/g\.mod/g["mod"]/g' xauusd_portfolio_discovery.py
       - name: Run full-risk re-entry grid
-        run: python xauusd_b_reentry_fullrisk.py
-      - name: Commit results
+        continue-on-error: true
+        run: |
+          mkdir -p b_reentry_fullrisk_results
+          python xauusd_b_reentry_fullrisk.py > b_reentry_fullrisk_results/run.log 2>&1
+      - name: Commit results or traceback
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add b_reentry_fullrisk_results
-          git commit -m "Add full-risk XAUUSD B re-entry results" || exit 0
+          git commit -m "Add full-risk XAUUSD B re-entry output" || exit 0
           git push origin HEAD:xauusd-backtest-20260924
