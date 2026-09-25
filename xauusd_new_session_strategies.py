@@ -49,12 +49,12 @@ def build_signals(df):
     prev_close=None
     for day,g0 in d.groupby('date',sort=True):
         g=g0.sort_values('timestamp')
+        # Previous trading-day close must stay Friday through the weekend.
         if int(g.iloc[0].wd)>=5:
-            if len(g): prev_close=float(g.iloc[-1].close_mid)
             continue
         date=str(day); year=int(g.iloc[0].year); wd=int(g.iloc[0].wd)
         if prev_close is not None:
-            r959=g[g.mod==599]; r1000=g[g.mod==600]; r1001=g[g.mod==601]
+            r959=g[g['mod']==599]; r1000=g[g['mod']==600]; r1001=g[g['mod']==601]
             if not r959.empty and not r1000.empty:
                 s=r959.iloc[0]; e=r1000.iloc[0]; side='LONG' if float(s.close_mid)>prev_close else 'SHORT'
                 sig['prev_0959_to_1000'].append({'date':date,'year':year,'wd':wd,'side':side,'entry_i':int(e.global_i),
@@ -64,7 +64,7 @@ def build_signals(df):
                 sig['prev_1000close_to_1001'].append({'date':date,'year':year,'wd':wd,'side':side,'entry_i':int(e.global_i),
                     'entry':float(e.open_ask if side=='LONG' else e.open_bid),'signal_px':float(s.close_mid),'prev_close':prev_close})
         # London 10:00 open vs US 15:30 open: if US > London => SHORT, else LONG.
-        lo=g[g.mod==600]; us=g[g.mod==930]
+        lo=g[g['mod']==600]; us=g[g['mod']==930]
         if not lo.empty and not us.empty:
             L=float(lo.iloc[0].open_mid); U=float(us.iloc[0].open_mid); side='SHORT' if U>L else 'LONG'; e=us.iloc[0]
             sig['london_us_meanrev'].append({'date':date,'year':year,'wd':wd,'side':side,'entry_i':int(e.global_i),
