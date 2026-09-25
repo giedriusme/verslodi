@@ -1,0 +1,20 @@
+{
+  "start": 300.0,
+  "final": 566.55,
+  "return_pct": 88.85,
+  "max_dd_pct": 25.0,
+  "trades": 46,
+  "milestones": [
+    {
+      "date": "2026-01-02",
+      "balance_before": 300.0,
+      "new_lot": 0.01
+    },
+    {
+      "date": "2026-07-09",
+      "balance_before": 406.55,
+      "new_lot": 0.02
+    }
+  ],
+  "rule": "Thu/Fri Asia breakout + mom>=0.15; 10% risk; SL20; if >=0.02 lot split 50% TP4 + 50% TP25; if 0.01 lot fallback full TP25."
+}
