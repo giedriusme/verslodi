@@ -1,0 +1,188 @@
+{
+  "focus_5pct_tp20_sl6": {
+    "tp2": 20.0,
+    "sl2": 6.0,
+    "b_train_final": 1162.8060000000135,
+    "b_train_dd": 0.5855852297321074,
+    "b_train_wr": 0.613564668769716,
+    "b_train_pos_years": 3,
+    "b_oos_final": 195.538,
+    "b_oos_dd": 0.5281680794743537,
+    "b_oos_wr": 0.6167664670658682,
+    "b_oos_pos_years": 0,
+    "b_oos_reentries": 56,
+    "b_oos_maxdayloss": 0.09651973949322305,
+    "b_oos_max_second_risk": 0.04972705372731883,
+    "ab_train_final": 1954.5450000000187,
+    "ab_train_dd": 0.5253507355187896,
+    "ab_train_wr": 0.6083445491251682,
+    "ab_train_pos_years": 4,
+    "ab_oos_final": 2368.361,
+    "ab_oos_dd": 0.5053593484137869,
+    "ab_oos_wr": 0.6368078175895765,
+    "ab_oos_pos_years": 4,
+    "ab_oos_reentries": 195,
+    "ab_oos_maxdayloss": 0.19803156623165694,
+    "ab_oos_maxrisk": 0.19855682282609238,
+    "ab_ret_2023": 0.13244333333333325,
+    "ab_ret_2024": 0.3327024457441632,
+    "ab_ret_2025": 0.891411179800462,
+    "ab_ret_2026": 1.7656105310727606
+  },
+  "trigger_train": {
+    "qualified": 170,
+    "TP": 19,
+    "SL": 75,
+    "TIME": 76,
+    "tp_rate_all": 0.11176470588235295,
+    "decisive_wr": 0.20212765957446807,
+    "per_year": {
+      "2018": {
+        "qualified": 11,
+        "TP": 0,
+        "SL": 1,
+        "TIME": 10,
+        "net_points": 18.185000000000173
+      },
+      "2019": {
+        "qualified": 20,
+        "TP": 1,
+        "SL": 6,
+        "TIME": 13,
+        "net_points": 25.35699999999997
+      },
+      "2020": {
+        "qualified": 40,
+        "TP": 8,
+        "SL": 22,
+        "TIME": 10,
+        "net_points": 85.22500000000059
+      },
+      "2021": {
+        "qualified": 39,
+        "TP": 6,
+        "SL": 18,
+        "TIME": 15,
+        "net_points": 38.58699999999999
+      },
+      "2022": {
+        "qualified": 60,
+        "TP": 4,
+        "SL": 28,
+        "TIME": 28,
+        "net_points": 46.83300000000145
+      }
+    }
+  },
+  "trigger_oos": {
+    "qualified": 195,
+    "TP": 29,
+    "SL": 117,
+    "TIME": 49,
+    "tp_rate_all": 0.14871794871794872,
+    "decisive_wr": 0.19863013698630136,
+    "per_year": {
+      "2023": {
+        "qualified": 50,
+        "TP": 3,
+        "SL": 27,
+        "TIME": 20,
+        "net_points": -43.33100000000013
+      },
+      "2024": {
+        "qualified": 52,
+        "TP": 4,
+        "SL": 27,
+        "TIME": 21,
+        "net_points": 2.046000000001186
+      },
+      "2025": {
+        "qualified": 59,
+        "TP": 11,
+        "SL": 40,
+        "TIME": 8,
+        "net_points": 43.54599999999982
+      },
+      "2026": {
+        "qualified": 34,
+        "TP": 11,
+        "SL": 23,
+        "TIME": 0,
+        "net_points": 82.0
+      }
+    }
+  },
+  "trigger_full": {
+    "qualified": 365,
+    "TP": 48,
+    "SL": 192,
+    "TIME": 125,
+    "tp_rate_all": 0.13150684931506848,
+    "decisive_wr": 0.2,
+    "per_year": {
+      "2018": {
+        "qualified": 11,
+        "TP": 0,
+        "SL": 1,
+        "TIME": 10,
+        "net_points": 18.185000000000173
+      },
+      "2019": {
+        "qualified": 20,
+        "TP": 1,
+        "SL": 6,
+        "TIME": 13,
+        "net_points": 25.35699999999997
+      },
+      "2020": {
+        "qualified": 40,
+        "TP": 8,
+        "SL": 22,
+        "TIME": 10,
+        "net_points": 85.22500000000059
+      },
+      "2021": {
+        "qualified": 39,
+        "TP": 6,
+        "SL": 18,
+        "TIME": 15,
+        "net_points": 38.58699999999999
+      },
+      "2022": {
+        "qualified": 60,
+        "TP": 4,
+        "SL": 28,
+        "TIME": 28,
+        "net_points": 46.83300000000145
+      },
+      "2023": {
+        "qualified": 50,
+        "TP": 3,
+        "SL": 27,
+        "TIME": 20,
+        "net_points": -43.33100000000013
+      },
+      "2024": {
+        "qualified": 52,
+        "TP": 4,
+        "SL": 27,
+        "TIME": 21,
+        "net_points": 2.046000000001186
+      },
+      "2025": {
+        "qualified": 59,
+        "TP": 11,
+        "SL": 40,
+        "TIME": 8,
+        "net_points": 43.54599999999982
+      },
+      "2026": {
+        "qualified": 34,
+        "TP": 11,
+        "SL": 23,
+        "TIME": 0,
+        "net_points": 82.0
+      }
+    }
+  }
+}
