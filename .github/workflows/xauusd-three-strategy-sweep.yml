@@ -20,6 +20,8 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: python -m pip install --upgrade pip pandas numpy requests
+      - name: Patch pandas mod-column access
+        run: sed -i 's/g\.mod/g["mod"]/g' xauusd_portfolio_discovery.py
       - name: Run sweep
         run: python xauusd_three_strategy_tp_sl_sweep.py
       - name: Commit results
