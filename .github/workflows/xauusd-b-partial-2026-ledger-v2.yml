@@ -28,6 +28,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -- xauusd_portfolio_discovery.py
           git add b_partial_2026_ledger_v2
           git commit -m "Add B Partial 2026 compounding ledger" || exit 0
           git pull --rebase origin xauusd-backtest-20260924
