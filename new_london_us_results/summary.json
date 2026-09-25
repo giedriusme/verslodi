@@ -1,0 +1,24 @@
+{
+  "signal_counts": {
+    "prevclose_0959_to_1000": 2240,
+    "prevclose_1000close_to_1001": 2240,
+    "london_us_same1530": 2228,
+    "london_us_1531": 2228
+  },
+  "prevclose_0959_to_1000": {
+    "best_robust": [],
+    "robust_count": 0
+  },
+  "prevclose_1000close_to_1001": {
+    "best_robust": [],
+    "robust_count": 0
+  },
+  "london_us_same1530": {
+    "best_robust": [],
+    "robust_count": 0
+  },
+  "london_us_1531": {
+    "best_robust": [],
+    "robust_count": 0
+  }
+}

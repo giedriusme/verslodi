@@ -1,0 +1,1 @@
+strategy,tp,sl,horizon_m1,train_score,train_n,train_net_points,train_ev_points,train_wr,train_pf,train_time_exits,oos_n,oos_net_points,oos_ev_points,oos_wr,oos_pf,oos_time_exits,oos_compound_final,oos_compound_dd,oos_stalled,full_net_points,full_ev_points,full_wr,full_pf,robust_score
