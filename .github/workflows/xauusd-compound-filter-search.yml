@@ -1,0 +1,33 @@
+name: XAUUSD compounded filter search
+on:
+  push:
+    branches: [xauusd-backtest-20260924]
+    paths:
+      - 'xauusd_compound_filter_search.py'
+      - '.github/workflows/xauusd-compound-filter-search.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: xauusd-backtest-20260924
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip pandas numpy requests
+      - name: Patch pandas mod-column access
+        run: sed -i 's/g\.mod/g["mod"]/g' xauusd_portfolio_discovery.py
+      - name: Run compounded search
+        run: python xauusd_compound_filter_search.py
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add compound_filter_results
+          git commit -m "Add compounded XAUUSD filter search results" || exit 0
+          git push origin HEAD:xauusd-backtest-20260924
