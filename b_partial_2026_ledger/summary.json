@@ -1,0 +1,12 @@
+{
+  "system": "B Partial Balanced: Thu/Fri Asia breakout, momentum>=0.15, 10% risk, SL20. If lot>=0.02 split 50% TP4 + 50% TP25 with original SL20; if 0.01 lot, fallback full TP25.",
+  "start": 300.0,
+  "final": 566.55,
+  "return_pct": 88.85,
+  "max_dd_pct": 25.0,
+  "trades": 46,
+  "split_trades": 11,
+  "fallback_001_trades": 35,
+  "first_split_date": "2026-07-09",
+  "max_lot": 0.02
+}

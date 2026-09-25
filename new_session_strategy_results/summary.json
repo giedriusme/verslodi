@@ -1,0 +1,12 @@
+{
+  "signal_counts": {
+    "prev_0959_to_1000": 2253,
+    "prev_1000close_to_1001": 2253,
+    "london_us_meanrev": 2254
+  },
+  "method": "TP/SL/horizon selected from 2018-2022 TRAIN only. 2023-2026 OOS shown only after shortlist. BID/ASK spread included; same-M1 TP+SL resolves to SL.",
+  "best_train_prev_0959_entry_1000": null,
+  "best_train_prev_1000close_entry_1001": null,
+  "best_train_london_us_with_displacement_filters": null,
+  "best_train_london_us_exact_no_filter": null
+}
