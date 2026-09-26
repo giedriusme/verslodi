@@ -34,3 +34,4 @@ jobs:
           git commit -m "Add previous-close regime results" || exit 0
           git pull --rebase origin xauusd-backtest-20260924
           git push origin HEAD:xauusd-backtest-20260924
+# trigger: 2026-09-26 regime rerun
